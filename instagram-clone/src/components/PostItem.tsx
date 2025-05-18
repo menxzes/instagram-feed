@@ -19,7 +19,7 @@ export default function PostItem({ post }: PostItemProps) {
   const [liked, setLiked] = useState(false)
 
   const toggleLike = () => {
-    setLiked((prev) => !prev)
+    setLiked(!liked)
   }
 
   return (
@@ -30,10 +30,16 @@ export default function PostItem({ post }: PostItemProps) {
       </div>
       <img src={post.imageUrl} alt="Post" className="w-full rounded-md mb-4" />
       <div className="flex items-center mb-2">
-        <button onClick={toggleLike} className="text-red-500 text-2xl mr-2">
-          {liked ? '❤️' : '🤍'}
+        <button onClick={toggleLike} className="focus:outline-none">
+          {liked ? (
+            <span className='text-red-500 text-2x1'>❤️</span>
+          ) : (
+            <span className='text-gray-400 text-2x1'>🤍</span>
+          )}
         </button>
-        <span>{liked ? post.numberOfLikes + 1 : post.numberOfLikes} curtidas</span>
+        <p className='text-sm font-medium mt-1'>
+            {post.numberOfLikes + (liked ? 1 : 0)} curtidas
+        </p>
       </div>
       <p><span className="font-semibold">{post.username}</span> {post.description}</p>
     </div>
