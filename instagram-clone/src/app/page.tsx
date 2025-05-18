@@ -4,8 +4,8 @@ import PostItem from "@/components/PostItem";
 
 export default function Home() {
   return (
-    <main className="max-w-2x1 mx-auto py-8 px-8">
-      <h1 className="text-3x1 font-bold mb-6 text-center">Cópia do Instagram</h1>
+    <main className="max-w-2xl mx-auto py-8 px-8">
+      <h1 className="text-3xl font-bold mb-6 text-center">Cópia do Instagram</h1>
       <div className="space-y-6">
         {posts.map(post => (
           <PostItem key={post.id} post={post} />
