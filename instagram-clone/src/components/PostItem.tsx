@@ -16,21 +16,28 @@ interface PostItemProps {
 
 export default function PostItem({ post }: PostItemProps) {
     const [liked, setLiked] = useState(false)
+    const [likes, setLikes] = useState(post.numberOfLikes);
+
+    const handleLike = () => {
+    setLiked((prev) => !prev);
+    setLikes((prev) => (liked ? prev - 1 : prev + 1));
+    };
+
     
     return (
         <div className="bg-white rounded-2xl shadow-lg p-4 w-full max-w-md mx-auto mb-6">
         {/* Cabeçalho */}
-        <div className="flex items-center gap-3 mb-3">
+        <div className="flex items-center gap-2 p-4">
             <img
             src={post.avatar}
             alt={`Avatar de ${post.username}`}
             className="w-10 h-10 rounded-full object-cover border"
             />
-            <span className="font-semibold text-gray-900">{post.username}</span>
+            <span className="font-semibold text-gray-800">{post.username}</span>
         </div>
 
         {/* Imagem do post */}
-        <div className="mb-3">
+        <div className="mb-3 max-w-md mx-auto">
             <img
             src={post.image}
             alt="Imagem do post"
@@ -38,8 +45,10 @@ export default function PostItem({ post }: PostItemProps) {
             />
         </div>
 
+
         {/* Curtidas */}
-        <div className="text-sm text-gray-700 mb-1">
+        <div className='grid grid-cols-3 gap-4'>
+            <div className="text-sm text-gray-700 mb-1">
             <button onClick={() => setLiked(!liked)} className='mb-2'>
                 {liked ? (
                     <Heart className='text=red-500 fill-red-500 w-6 h-6' />
@@ -48,6 +57,11 @@ export default function PostItem({ post }: PostItemProps) {
                 )}
             </button>
         </div>
+        <p className="px-4 pt-2 font-medium text-gray-800">
+            {likes} curtida{likes !== 1 ? "s" : ""}
+        </p>
+        </div>
+    
 
         {/* Descrição */}
         <p className="text-sm text-gray-800">
