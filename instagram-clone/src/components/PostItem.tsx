@@ -47,8 +47,7 @@ export default function PostItem({ post }: PostItemProps) {
 
 
         {/* Curtidas */}
-        <div className='grid grid-cols-3 gap-4'>
-            <div className="text-sm text-gray-700 mb-1">
+        <div className="text-sm text-gray-700 mb-1">
             <button onClick={() => setLiked(!liked)} className='mb-2'>
                 {liked ? (
                     <Heart className='text=red-500 fill-red-500 w-6 h-6' />
@@ -56,10 +55,6 @@ export default function PostItem({ post }: PostItemProps) {
                     <HeartIcon className='text-gray-700 w-6 h-6' />
                 )}
             </button>
-        </div>
-        <p className="px-4 pt-2 font-medium text-gray-800">
-            {likes} curtida{likes !== 1 ? "s" : ""}
-        </p>
         </div>
     
 
