@@ -6,50 +6,49 @@ interface PostItemProps {
     post: {
         id: number
         username: string
-        avatarUrl: string
-        imageUrl: string
+        avatar: string
+        image: string
         numberOfLikes: number
         description: string
     }
 }
 
 export default function PostItem({ post }: PostItemProps) {
-  const [liked, setLiked] = useState(false)
-
-  const toggleLike = () => {
-    setLiked(!liked)
-  }
+    const [liked, setLiked] = useState(false)
+    const toggleLike = () => {
+        setLiked(!liked)
+    }
 
   return (
-    <div className='bg-white rounded-xl shadow-md overflow-hidden'>
+    <div className="bg-white rounded-2xl shadow-lg p-4 w-full max-w-md mx-auto mb-6">
+      {/* Cabeçalho */}
+      <div className="flex items-center gap-3 mb-3">
+        <img
+          src={post.avatar}
+          alt={`Avatar de ${post.username}`}
+          className="w-10 h-10 rounded-full object-cover border"
+        />
+        <span className="font-semibold text-gray-900">{post.username}</span>
+      </div>
 
-        <div className='flex items-center gap-3 px-4 py-3'>
-            <img src="{post.avatarUrl}" alt="`${post.username}'s avatar`" className='w-10 h-10 rounded-full' />
-            <span className='font-medium'>{post.username}</span>
-        </div>
+      {/* Imagem do post */}
+      <div className="mb-3">
+        <img
+          src={post.image}
+          alt="Imagem do post"
+          className="w-full rounded-lg object-cover"
+        />
+      </div>
 
-        <img src="{post.imageUrl}" alt="Post" className='w-full h-auto object-cover' />
+      {/* Curtidas */}
+      <div className="text-sm text-gray-700 mb-1">
+        ❤️ {post.numberOfLikes} curtidas
+      </div>
 
-        <div className='px-4 pt-t pb-1'>
-            <button onClick={toggleLike} className='focus:outline-none'>
-                {liked ? (
-                    <span className='text-red-500 text-2x1'>❤️</span>
-                ) : (
-                    <span className='text-gray-400 text-2xl'>🤍</span>
-                )}
-            </button>
-            <p className='text-sm font-medium mt-1'>
-                {post.numberOfLikes + (liked ? 1 : 0)} curtidas
-            </p>
-        </div>
-
-        <div className='px-4 pb-3'>
-            <p className='text-sm'>
-                <span className='font-medium mr-1'>{post.username}</span>
-                {post.description}
-            </p>
-        </div>
-
+      {/* Descrição */}
+      <p className="text-sm text-gray-800">
+        <span className="font-semibold">{post.username}</span> {post.description}
+      </p>
     </div>
-  )
+  );
 }
