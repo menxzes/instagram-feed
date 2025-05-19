@@ -27,7 +27,7 @@ Este projeto é um mini-clone do feed de postagens do Instagram, desenvolvido co
 
 ## 📸 Demonstração
 
-![Captura de tela do projeto](public/images/demo.png) <!-- Altere para o caminho correto da sua imagem demonstrativa, se desejar -->
+![Captura de tela do projeto](instagram-clone/public/images/demo.png) <!-- Altere para o caminho correto da sua imagem demonstrativa, se desejar -->
 
 
 
